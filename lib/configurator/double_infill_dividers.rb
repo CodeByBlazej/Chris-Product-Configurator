@@ -1,7 +1,7 @@
 class DoubleInfillDividers
   
-  def initialize material, size
-    @material = material
+  def initialize size, material
     @size = size
+    @material = material
   end
 end
