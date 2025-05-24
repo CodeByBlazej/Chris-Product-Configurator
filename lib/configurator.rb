@@ -2,9 +2,10 @@ require_relative 'configurator/gold_range'
 require_relative 'configurator/bronze_range'
 require_relative 'configurator/silver_range'
 require_relative 'configurator/double_infill_dividers'
+require 'pry-byebug'
 
 class Configurator
-  attr_reader :product_range, :product_size, :product_material, :current_product, :product_amount
+  attr_reader :product_range, :product_size, :product_material, :current_product, :product_amount, :cart
   
   def initialize
     @product_range = nil
@@ -12,7 +13,10 @@ class Configurator
     @product_material = nil
     @current_product = nil
     @product_amount = nil
-    @cart = {}
+    @cart = {
+      'front' => [],
+      'divider' => []
+    }
   end
 
   def configure_product
@@ -21,7 +25,7 @@ class Configurator
     select_size
     select_material
     select_amount
-    add_product_to_cart
+    add_to_cart
   end
 
   def select_product
@@ -59,7 +63,7 @@ class Configurator
       size = gets.chomp.downcase
     end
 
-    @product_size = size
+    @product_size = size + 'x7ft'
     puts "You selected #{product_size.upcase}x7ft #{current_product.upcase}"
   end
 
@@ -89,11 +93,34 @@ class Configurator
     puts "You selected #{product_amount} #{current_product.upcase}S"
   end
 
+  def add_to_cart
+    class_name = product_range.capitalize + 'Range'
+    object_name = Object.const_get(class_name)
+    object = object_name.new(product_size, product_material, product_amount)
+
+    # product_exist = cart[current_product].any? { |object| object.size == product_size && object.material == product_material }
+    same_product = cart[current_product].find { |object| object.size == product_size && object.material == product_material }
+
+    # binding.pry
+
+    if cart[current_product].empty? || same_product.nil?
+      cart[current_product].push(object)
+      # add_to_cart
+    elsif same_product
+      same_product.amount += product_amount
+    end
+
+    p cart
+    configure_product
+  end
+
   def add_product_to_cart
     class_name = product_range.capitalize + 'Range'
     object_name = Object.const_get(class_name)
     object = object_name.new(product_size, product_material, product_amount)
     p object 
+    cart.push(object)
+    p cart
 
     #add object to hash. key would be number of product added to basket
     #{1: [size = 8, material = plastic, amount = 2]} if another object variables would math product in the basket just change amount = DOING THAT I CAN'T ADD AMOUNT TO THE OBJECT
