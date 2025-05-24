@@ -8,7 +8,24 @@ class Cart
     }
   end
 
-  def add_to_basket
-    
+  def display
+    print "\nYou have now these items in your basket:\n"
+    if any_fronts?
+      print "\nFRONTS:\n"
+      basket['front'].each { |prod| puts "#{prod.amount}X #{prod.size} made of #{prod.material.upcase}" }
+    end
+
+    if any_dividers?
+      print "\nDIVIDERS:\n"
+      basket['divider'].each { |prod| puts "#{prod.amount}X #{prod.size} made of #{prod.material.upcase}" }
+    end
+  end
+
+  def any_fronts?
+    basket['front'].any?
+  end
+
+  def any_dividers?
+    basket['divider'].any?
   end
 end
