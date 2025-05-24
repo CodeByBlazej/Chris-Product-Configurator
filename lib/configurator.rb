@@ -112,8 +112,28 @@ class Configurator
       same_product.amount += product_amount
     end
 
-    p cart
-    configure_product
+    # binding.pry
+    cart.display
+
+    get_price_or_continue
+
+    # configure_product
+  end
+
+  def get_price_or_continue
+    puts "Do you want to add more products or get price of your current inventory? Type GET PRICE or CONTINUE"
+    answer = gets.chomp.downcase
+
+    until answer == "get price" || answer == "continue"
+      puts "Oops! Looks like typo, please type again..."
+      answer = gets.chomp.downcase
+    end
+
+    if answer == "get price"
+      get_price
+    else
+      configure_product
+    end
   end
 
   def create_cart
