@@ -2,6 +2,7 @@ require_relative 'configurator/gold_range'
 require_relative 'configurator/bronze_range'
 require_relative 'configurator/silver_range'
 require_relative 'configurator/double_infill_dividers'
+require_relative 'configurator/cart'
 require 'pry-byebug'
 
 class Configurator
@@ -13,10 +14,11 @@ class Configurator
     @product_material = nil
     @current_product = nil
     @product_amount = nil
-    @cart = {
-      'front' => [],
-      'divider' => []
-    }
+    create_cart
+    # @cart = {
+    #   'front' => [],
+    #   'divider' => []
+    # }
   end
 
   def configure_product
@@ -98,13 +100,13 @@ class Configurator
     object_name = Object.const_get(class_name)
     object = object_name.new(product_size, product_material, product_amount)
 
-    # product_exist = cart[current_product].any? { |object| object.size == product_size && object.material == product_material }
-    same_product = cart[current_product].find { |object| object.size == product_size && object.material == product_material }
-
+    
+    same_product = cart.basket[current_product].find { |object| object.size == product_size && object.material == product_material }
     # binding.pry
 
-    if cart[current_product].empty? || same_product.nil?
-      cart[current_product].push(object)
+
+    if cart.basket[current_product].empty? || same_product.nil?
+      cart.basket[current_product].push(object)
       # add_to_cart
     elsif same_product
       same_product.amount += product_amount
@@ -112,6 +114,10 @@ class Configurator
 
     p cart
     configure_product
+  end
+
+  def create_cart
+    @cart = Cart.new
   end
 
   def add_product_to_cart
