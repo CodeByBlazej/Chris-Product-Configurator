@@ -1,13 +1,15 @@
 class GoldRange
-  attr_reader :size, :material
+  attr_reader :size, :material, :type, :products, :price
   attr_accessor :amount
 
-  def initialize size, material, amount
+  def initialize type, size, material, amount
+    @type = type
     @size = size
     @material = material
     @amount = amount
+    @price = nil
 
-    @PRODUCTS = {
+    @products = {
       'front' => {
         '8x7ft' => {'softwood' => 1210, 'plastic' => 1539},
         '10x7ft' => {'softwood' => 1337, 'plastic' => 1699},
@@ -22,5 +24,17 @@ class GoldRange
         
       }
     }
+  end
+
+  def count
+    @price = products[type][size][material] * amount
+
+    display_price
+  end
+
+  def display_price
+    net_price = (price / 1.2).round(2)
+    vat = (price - net_price).round(2)
+    puts "Price for #{amount}X #{type.upcase} #{size} made of #{material.upcase} is: GROSS: #{price} NET: #{net_price} VAT: #{vat}"
   end
 end
