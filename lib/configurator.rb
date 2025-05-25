@@ -98,7 +98,7 @@ class Configurator
   def add_to_cart
     class_name = product_range.capitalize + 'Range'
     object_name = Object.const_get(class_name)
-    object = object_name.new(product_size, product_material, product_amount)
+    object = object_name.new(current_product, product_size, product_material, product_amount)
 
     
     same_product = cart.basket[current_product].find { |object| object.size == product_size && object.material == product_material }
@@ -121,7 +121,7 @@ class Configurator
   end
 
   def get_price_or_continue
-    puts "Do you want to add more products or get price of your current inventory? Type GET PRICE or CONTINUE"
+    puts "\nDo you want to add more products or get price of your current inventory? Type GET PRICE or CONTINUE"
     answer = gets.chomp.downcase
 
     until answer == "get price" || answer == "continue"
@@ -130,7 +130,7 @@ class Configurator
     end
 
     if answer == "get price"
-      get_price
+      cart.get_price
     else
       configure_product
     end
@@ -143,7 +143,7 @@ class Configurator
   def add_product_to_cart
     class_name = product_range.capitalize + 'Range'
     object_name = Object.const_get(class_name)
-    object = object_name.new(product_size, product_material, product_amount)
+    object = object_name.new(current_product, product_size, product_material, product_amount)
     p object 
     cart.push(object)
     p cart
