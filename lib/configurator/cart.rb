@@ -21,6 +21,16 @@ class Cart
     end
   end
 
+  def get_price
+    if any_fronts?
+      basket['front'].each { |prod| prod.count }
+    end
+
+    if any_dividers?
+      basket['divider'].each { |prod| prod.count } 
+    end
+  end
+
   def any_fronts?
     basket['front'].any?
   end
