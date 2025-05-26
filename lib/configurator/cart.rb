@@ -39,6 +39,9 @@ class Cart
     if any_double_infill_dividers?
       basket['double infill divider'].each { |prod| prod.count } 
     end
+
+    # all_objects = basket.values.flatten
+    # all_objects.each { |prod| puts }
   end
 
   def any_fronts?
