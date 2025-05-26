@@ -41,6 +41,6 @@ class SilverRange
   def display_price
     net_price = (price / 1.2).round(2)
     vat = (price - net_price).round(2)
-    puts "\nPrice for #{amount}X #{range.upcase} #{type.upcase} #{size} made of #{material.upcase} is: GROSS: #{price} NET: #{net_price} VAT: #{vat}"
+    puts "\nPrice for #{amount}X #{range.upcase} #{type.upcase} #{size} made of #{material.upcase} is:\nGROSS: #{price} NET: #{net_price} VAT: #{vat}"
   end
 end
