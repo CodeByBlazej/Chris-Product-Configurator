@@ -28,20 +28,20 @@ class Cart
   end
 
   def get_price
-    if any_fronts?
-      basket['front'].each { |prod| prod.count }
+    all_objects = basket.values.flatten
+    all_objects.each { |prod| prod.count }
+
+    total_gross = 0
+    total_net = 0
+    total_vat = 0
+
+    all_objects.each do |prod| 
+      total_gross += prod.price
+      total_net += prod.net_price
+      total_vat += prod.vat 
     end
 
-    if any_dividers?
-      basket['divider'].each { |prod| prod.count } 
-    end
-
-    if any_double_infill_dividers?
-      basket['double infill divider'].each { |prod| prod.count } 
-    end
-
-    # all_objects = basket.values.flatten
-    # all_objects.each { |prod| puts }
+    puts "\nTotal price for everything is:\nGROSS: #{total_gross.round(2)} NET: #{total_net.round(2)} VAT: #{total_vat.round(2)}"
   end
 
   def any_fronts?
