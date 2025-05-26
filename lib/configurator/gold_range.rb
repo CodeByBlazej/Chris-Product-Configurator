@@ -22,7 +22,12 @@ class GoldRange
         '10x7ft' => {'softwood' => 986, 'plastic' => 1379},
         '12x7ft' => {'softwood' => 1029, 'plastic' => 1439},
         '14x7ft' => {'softwood' => 1072, 'plastic' => 1499},
-        
+      },
+      'double infill divider' => {
+        '8x7ft' => {'softwood' => 578, 'plastic' => 808},
+        '10x7ft' => {'softwood' => 695, 'plastic' => 972},
+        '12x7ft' => {'softwood' => 795, 'plastic' => 1112},
+        '14x7ft' => {'softwood' => 894, 'plastic' => 1251},
       }
     }
   end

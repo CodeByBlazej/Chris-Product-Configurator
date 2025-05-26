@@ -15,10 +15,6 @@ class Configurator
     @current_product = nil
     @product_amount = nil
     create_cart
-    # @cart = {
-    #   'front' => [],
-    #   'divider' => []
-    # }
   end
 
   def configure_product
@@ -31,10 +27,10 @@ class Configurator
   end
 
   def select_product
-    puts 'What product do you want to customise? Type FRONT or DIVIDER'
+    puts 'What product do you want to customise? Type FRONT, DIVIDER or DOUBLE INFILL DIVIDER'
     product = gets.chomp.downcase
 
-    until product == 'front' || product == 'divider'
+    until product == 'front' || product == 'divider' || product == 'double infill divider' do
       puts "Oops! Looks like typo, please type again..."
       product = gets.chomp.downcase
     end

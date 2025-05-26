@@ -22,7 +22,12 @@ class SilverRange
         '10x7ft' => {'softwood' => 539.28, 'plastic' => 665.28},
         '12x7ft' => {'softwood' => 607.32, 'plastic' => 761.67},
         '14x7ft' => {'softwood' => 672.84, 'plastic' => 856.17},
-        
+      },
+      'double infill divider' => {
+        '8x7ft' => {'softwood' => 578, 'plastic' => 808},
+        '10x7ft' => {'softwood' => 695, 'plastic' => 972},
+        '12x7ft' => {'softwood' => 795, 'plastic' => 1112},
+        '14x7ft' => {'softwood' => 894, 'plastic' => 1251},
       }
     }
   end

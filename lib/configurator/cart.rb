@@ -4,7 +4,8 @@ class Cart
   def initialize
     @basket = {
       'front' => [],
-      'divider' => []
+      'divider' => [],
+      'double infill divider' => []
     }
   end
 
@@ -19,6 +20,11 @@ class Cart
       print "\nDIVIDERS:\n"
       basket['divider'].each { |prod| puts "#{prod.amount}X #{prod.range.upcase} #{prod.size} made of #{prod.material.upcase}" }
     end
+
+    if any_double_infill_dividers?
+      print "\nDOUBLE INFILL DIVIDERS:\n"
+      basket['double infill divider'].each { |prod| puts "#{prod.amount}X #{prod.range.upcase} #{prod.size} made of #{prod.material.upcase}" }
+    end
   end
 
   def get_price
@@ -29,6 +35,10 @@ class Cart
     if any_dividers?
       basket['divider'].each { |prod| prod.count } 
     end
+
+    if any_double_infill_dividers?
+      basket['double infill divider'].each { |prod| prod.count } 
+    end
   end
 
   def any_fronts?
@@ -37,5 +47,9 @@ class Cart
 
   def any_dividers?
     basket['divider'].any?
+  end
+
+  def any_double_infill_dividers?
+    basket['double infill divider'].any?
   end
 end
