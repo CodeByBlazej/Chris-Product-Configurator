@@ -12,12 +12,12 @@ class Cart
     print "\nYou have now these items in your basket:\n"
     if any_fronts?
       print "\nFRONTS:\n"
-      basket['front'].each { |prod| puts "#{prod.amount}X #{prod.size} made of #{prod.material.upcase}" }
+      basket['front'].each { |prod| puts "#{prod.amount}X #{prod.range.upcase} #{prod.size} made of #{prod.material.upcase}" }
     end
 
     if any_dividers?
       print "\nDIVIDERS:\n"
-      basket['divider'].each { |prod| puts "#{prod.amount}X #{prod.size} made of #{prod.material.upcase}" }
+      basket['divider'].each { |prod| puts "#{prod.amount}X #{prod.range.upcase} #{prod.size} made of #{prod.material.upcase}" }
     end
   end
 

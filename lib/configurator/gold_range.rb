@@ -1,9 +1,10 @@
 class GoldRange
-  attr_reader :size, :material, :type, :products, :price
+  attr_reader :type, :range, :size, :material, :products, :price
   attr_accessor :amount
 
-  def initialize type, size, material, amount
+  def initialize type, range, size, material, amount
     @type = type
+    @range = range
     @size = size
     @material = material
     @amount = amount
@@ -35,6 +36,6 @@ class GoldRange
   def display_price
     net_price = (price / 1.2).round(2)
     vat = (price - net_price).round(2)
-    puts "Price for #{amount}X #{type.upcase} #{size} made of #{material.upcase} is: GROSS: #{price} NET: #{net_price} VAT: #{vat}"
+    puts "\nPrice for #{amount}X #{range.upcase} #{type.upcase} #{size} made of #{material.upcase} is: GROSS: #{price} NET: #{net_price} VAT: #{vat}"
   end
 end

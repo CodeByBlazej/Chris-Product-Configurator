@@ -98,7 +98,7 @@ class Configurator
   def add_to_cart
     class_name = product_range.capitalize + 'Range'
     object_name = Object.const_get(class_name)
-    object = object_name.new(current_product, product_size, product_material, product_amount)
+    object = object_name.new(current_product, product_range, product_size, product_material, product_amount)
 
     
     same_product = cart.basket[current_product].find { |object| object.size == product_size && object.material == product_material }
