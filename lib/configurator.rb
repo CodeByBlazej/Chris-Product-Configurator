@@ -4,6 +4,7 @@ require_relative 'configurator/silver_range'
 require_relative 'configurator/double_infill_dividers'
 require_relative 'configurator/cart'
 require 'pry-byebug'
+require 'colorize'
 
 class Configurator
   attr_reader :product_range, :product_size, :product_material, :current_product, :product_amount, :cart
@@ -27,68 +28,68 @@ class Configurator
   end
 
   def select_product
-    puts "\nWhat product do you want to customise?\nType: FRONT, DIVIDER or DOUBLE INFILL DIVIDER"
+    puts "\nWhat product do you want to customise?\nType: FRONT, DIVIDER or DOUBLE INFILL DIVIDER".colorize(:green)
     product = gets.chomp.downcase
 
     until product == 'front' || product == 'divider' || product == 'double infill divider' do
-      puts "Oops! Looks like typo, please type again..."
+      puts "Oops! Looks like typo, please type again...".colorize(:red)
       product = gets.chomp.downcase
     end
 
     @current_product = product
-    puts "\nYou selected #{current_product.upcase} product"
+    puts "\nYou selected #{current_product.upcase} product".colorize(:yellow)
   end
 
   def select_range
-    puts "\nWhat product range would you prefer?\nType: GOLD, SILVER or BRONZE"
+    puts "\nWhat product range would you prefer?\nType: GOLD, SILVER or BRONZE".colorize(:green)
     range = gets.chomp.downcase
 
     until range == 'gold' || range =='silver' || range == 'bronze' do
-      puts "Oops! Looks like typo, please type again..."
+      puts "Oops! Looks like typo, please type again...".colorize(:red)
       range = gets.chomp.downcase
     end
 
     @product_range = range
-    puts "\nYou selected #{product_range.upcase} front"
+    puts "\nYou selected #{product_range.upcase} front".colorize(:yellow)
   end
 
   def select_size
-    puts "\nWhat size of your #{current_product.upcase} do you need?\nAvailable sizes are: 8x7ft | 10x7ft | 12x7ft | 14x7ft\nType only 1st number"
+    puts "\nWhat size of your #{current_product.upcase} do you need?\nAvailable sizes are: 8x7ft | 10x7ft | 12x7ft | 14x7ft\nType only 1st number".colorize(:green)
     size = gets.chomp.downcase
 
     until size == '8' || size == '10' || size == '12' || size == '14' do
-      puts "Oops! Looks like typo, please type again..."
+      puts "Oops! Looks like typo, please type again...".colorize(:red)
       size = gets.chomp.downcase
     end
 
     @product_size = size + 'x7ft'
-    puts "\nYou selected #{product_size.upcase}x7ft #{current_product.upcase}"
+    puts "\nYou selected #{product_size.upcase}x7ft #{current_product.upcase}".colorize(:yellow)
   end
 
   def select_material
-    puts "\nWhat material do you want your #{current_product.upcase} to be made of?\nType: SOFTWOOD or PLASTIC"
+    puts "\nWhat material do you want your #{current_product.upcase} to be made of?\nType: SOFTWOOD or PLASTIC".colorize(:green)
     material = gets.chomp.downcase
 
     until material == 'softwood' || material == 'plastic' do
-      puts "Oops! Looks like typo, please type again..."
+      puts "Oops! Looks like typo, please type again...".colorize(:red)
       material = gets.chomp.downcase
     end
 
     @product_material = material
-    puts "\nYou selected #{product_material.upcase} material"
+    puts "\nYou selected #{product_material.upcase} material".colorize(:yellow)
   end
 
   def select_amount
-    puts "\nHow many #{current_product.upcase}S do you need?"
+    puts "\nHow many #{current_product.upcase}S do you need?".colorize(:green)
     amount = gets.chomp.to_i
 
     until amount.is_a?(Integer) do
-      puts "Oops! Looks like typo, please type numbers only!"
+      puts "Oops! Looks like typo, please type numbers only!".colorize(:red)
       amount = gets.chomp.to_i
     end
 
     @product_amount = amount
-    puts "\nYou selected #{product_amount} #{current_product.upcase}S"
+    puts "\nYou selected #{product_amount} #{current_product.upcase}S".colorize(:yellow)
   end
 
   def add_to_cart
@@ -112,11 +113,11 @@ class Configurator
   end
 
   def get_price_or_continue
-    puts "\nDo you want to add more products or get price of your current inventory?\nType: GET PRICE or CONTINUE"
+    puts "\nDo you want to add more products or get price of your current inventory?\nType: GET PRICE or CONTINUE".colorize(:green)
     answer = gets.chomp.downcase
 
     until answer == "get price" || answer == "continue"
-      puts "Oops! Looks like typo, please type again..."
+      puts "Oops! Looks like typo, please type again...".colorize(:red)
       answer = gets.chomp.downcase
     end
 
