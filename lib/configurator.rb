@@ -3,7 +3,7 @@ require_relative 'configurator/bronze_range'
 require_relative 'configurator/silver_range'
 require_relative 'configurator/double_infill_dividers'
 require_relative 'configurator/cart'
-require 'pry-byebug'
+# require 'pry-byebug'
 require 'colorize'
 
 class Configurator
