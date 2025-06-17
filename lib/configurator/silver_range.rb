@@ -14,22 +14,22 @@ class SilverRange
 
     @products = {
       'front' => {
-        '8x7ft' => {'softwood' => 635, 'plastic' => 700},
-        '10x7ft' => {'softwood' => 720, 'plastic' => 881},
-        '12x7ft' => {'softwood' => 772, 'plastic' => 950},
-        '14x7ft' => {'softwood' => 871, 'plastic' => 1089}
+        '8x7ft' => {'softwood' => 635, 'plastic' => 770},
+        '10x7ft' => {'softwood' => 720, 'plastic' => 969.10},
+        '12x7ft' => {'softwood' => 772, 'plastic' => 1045},
+        '14x7ft' => {'softwood' => 871, 'plastic' => 1197.90}
       },
       'divider' => {
-        '8x7ft' => {'softwood' => 466.20, 'plastic' => 553.77},
-        '10x7ft' => {'softwood' => 539.28, 'plastic' => 665.28},
-        '12x7ft' => {'softwood' => 607.32, 'plastic' => 761.67},
-        '14x7ft' => {'softwood' => 672.84, 'plastic' => 856.17},
+        '8x7ft' => {'softwood' => 466.20, 'plastic' => 609.15},
+        '10x7ft' => {'softwood' => 539.28, 'plastic' => 731.81},
+        '12x7ft' => {'softwood' => 607.32, 'plastic' => 837.84},
+        '14x7ft' => {'softwood' => 672.84, 'plastic' => 941.79},
       },
       'double infill divider' => {
-        '8x7ft' => {'softwood' => 578, 'plastic' => 808},
-        '10x7ft' => {'softwood' => 695, 'plastic' => 972},
-        '12x7ft' => {'softwood' => 795, 'plastic' => 1112},
-        '14x7ft' => {'softwood' => 894, 'plastic' => 1251},
+        '8x7ft' => {'softwood' => 578, 'plastic' => 888.80},
+        '10x7ft' => {'softwood' => 695, 'plastic' => 1069.20},
+        '12x7ft' => {'softwood' => 795, 'plastic' => 1223.20},
+        '14x7ft' => {'softwood' => 894, 'plastic' => 1376.10},
       }
     }
   end
